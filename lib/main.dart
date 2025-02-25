@@ -1,16 +1,18 @@
-import 'package:adoraapp/screens/home_screen.dart';
-import 'package:adoraapp/services/background_service.dart';
 import 'package:flutter/material.dart';
-
-
+import 'screens/home_screen.dart';
+import 'services/location_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initializeService();
+  
+
+  await LocationService.initialize();
+ 
   runApp(const MyApp());
 }
 
+
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Location Tracker',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        useMaterial3: true,
+        useMaterial3: true,  
       ),
       home: const HomeScreen(),
     );
